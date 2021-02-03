@@ -36,7 +36,7 @@ jobs:
           VERSION=$(npx next-standard-version)
           _DESCRIPTION=$(npx standard-version --dry-run --silent | grep -v yarn | grep -v Done | grep -v "\-\-\-" | grep -v standard-version)
           echo "DESCRIPTION<<EOF" >> $GITHUB_ENV
-          echo $_DESCRIPTION >> $GITHUB_ENV
+          echo "$_DESCRIPTION" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
           echo >>$GITHUB_ENV VERSION=$VERSION
           sed -i "s/__version__ = .*/__version__ = \"${VERSION}\"/g" src/__init__.py
